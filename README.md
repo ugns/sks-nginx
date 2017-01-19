@@ -47,6 +47,8 @@ reverse proxy server for `/pks` location URIs back to
 
 ### References
 
+Web template modified from [mattrude/pgpkeyserver-lite](https://github.com/mattrude/pgpkeyserver-lite)
+
 Containers:
 - [zhujs/sks](http://hub.docker.com/r/zhusj/sks) SKS key server container
 - [nginx:alpine](http://hub.docker.com/_/nginx) Nginx Alpine container
