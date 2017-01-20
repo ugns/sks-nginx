@@ -25,7 +25,7 @@ docker network create --driver overlay --subnet 10.0.9.0/24 ugns
 
 docker service create --name sks --network ugns --publish 11370:11370 \
   --mount type=volume,src=sks-data,dst=/var/lib/sks,volume-driver=local \
-  zhujs/sks
+  zhusj/sks
 ```
 
 Deployment uses the Docker engine host's `/etc/ssl` directory contents as a
@@ -50,7 +50,7 @@ reverse proxy server for `/pks` location URIs back to
 Web template modified from [mattrude/pgpkeyserver-lite](https://github.com/mattrude/pgpkeyserver-lite)
 
 Containers:
-- [zhujs/sks](http://hub.docker.com/r/zhusj/sks) SKS key server container
+- [zhusj/sks](http://hub.docker.com/r/zhusj/sks) SKS key server container
 - [nginx:alpine](http://hub.docker.com/_/nginx) Nginx Alpine container
 
 Live demo: [UnderGrid Network Service Key Server](http://sks.undergrid.net:11371)
