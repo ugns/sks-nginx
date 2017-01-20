@@ -18,12 +18,12 @@ Current build configuration assumes use of Docker swarm mode to utilize the
 mesh routing DNS to locate the SKS key servers to proxy to.
 
 Current build configuration looks for a `sks` service to have been created and
-deployed to the `ugns` swarm overlay network.
+deployed to the swarm overlay network.
 
 ```
-docker network create --driver overlay --subnet 10.0.9.0/24 ugns
+docker network create --driver overlay --subnet 10.0.9.0/24 my-network
 
-docker service create --name sks --network ugns --publish 11370:11370 \
+docker service create --name sks --network my-network --publish 11370:11370 \
   --mount type=volume,src=sks-data,dst=/var/lib/sks,volume-driver=local \
   zhusj/sks
 ```
@@ -36,14 +36,14 @@ under `/etc/ssl/certs`, the SSL certficate key to be deployed under
 ### Run 
 
 ```
-docker service create --name nginx --network ugns --publish 80:80 \
+docker service create --name nginx --network my-network --publish 80:80 \
   --publish 443:443 --publish 11371:11371 --mount \
   type=bind,src=/etc/ssl,dst=/etc/ssl,readonly jtbouse/sks-nginx
 ```
 
 Configuration is setup to serve static content from `/usr/share/nginx/html` and
 reverse proxy server for `/pks` location URIs back to
-`http://tasks.sks.ugns:11371` using Docker swarm DNS resolution.
+`http://sks:11371` using Docker swarm service VIP.
 
 ### References
 
