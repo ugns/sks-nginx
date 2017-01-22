@@ -1,4 +1,4 @@
-# SKS Key Server Web UI
+# SKS OpenPGP Keyserver Web Front End
 
 ## Intro
 
