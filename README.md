@@ -2,8 +2,8 @@
 
 ## Intro
 
-This is the [Nginx](http://nginx.org) web frontend UI for the 
-[SKS Key Server](https://bitbucket.org/skskeyserver/sks-keyserver) using
+This is the [Nginx](http://nginx.org) web front end for the
+[SKS OpenPGP Keyserver](https://bitbucket.org/skskeyserver/sks-keyserver) using
 [Alpine Linux Project](http://alpinelinux.org).
 
 ## Guide
@@ -25,7 +25,7 @@ docker network create --driver overlay --subnet 10.0.9.0/24 my-network
 
 docker service create --name sks --network my-network --publish 11370:11370 \
   --mount type=volume,src=sks-data,dst=/var/lib/sks,volume-driver=local \
-  zhusj/sks
+  jtbouse/sks
 ```
 
 Deployment uses the Docker engine host's `/etc/ssl` directory contents as a
@@ -50,7 +50,7 @@ reverse proxy server for `/pks` location URIs back to
 Web template modified from [mattrude/pgpkeyserver-lite](https://github.com/mattrude/pgpkeyserver-lite)
 
 Containers:
-- [zhusj/sks](http://hub.docker.com/r/zhusj/sks) SKS key server container
-- [nginx:alpine](http://hub.docker.com/_/nginx) Nginx Alpine container
+- [jtbouse/sks](http://hub.docker.com/r/jtbousej/sks) SKS OpenPGP Keyserver
+- [nginx:alpine](http://hub.docker.com/_/nginx) Nginx on Alpine Linux
 
 Live demo: [UnderGrid Network Service Key Server](http://sks.undergrid.net:11371)
