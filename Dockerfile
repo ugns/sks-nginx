@@ -1,10 +1,9 @@
 FROM nginx:alpine
-MAINTAINER Jeremy T. Bouse <Jeremy.Bouse@UnderGrid.net>
+LABEL maintainer="Jeremy T. Bouse <Jeremy.Bouse@UnderGrid.net>"
 
-COPY nginx /etc/nginx/
+COPY templates /etc/nginx/templates
 COPY html /usr/share/nginx/html
 
-VOLUME /etc/ssl
-EXPOSE 80 443 11371
-
-CMD ["nginx", "-g", "daemon off;"]
+ENV SKS_HKP_PORT=11371 \
+    SKS_HOSTNAME=localhost \
+    SERVICES_DOMAIN=local
